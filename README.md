@@ -13,10 +13,48 @@
 
 ## Algoritmos utilizados
   Los algoritmos desarrollados y evaluados en este proyecto son:
-  - Búsqueda en Anchura (Breadth-First Search, BFS)
+  - Búsqueda en Amplitud (Breadth-First Search, BFS)
   - Búsqueda en Profundidad (Depth-First Search, DFS)
   - Branch & Bound (búsqueda por coste uniforme)
   - A* (Branch & Bound con heurística), este mejora la eficiencia a la hora de la exploración del espacio de búsqueda.
+
+## Estructura de datos utilizadas
+  El proyecto hace uso de varias estructuras de datos fundamentales para la implementación de los algoritmos de búsqueda:
+
+### Cola FIFO (First-In, First-Out)
+  Son estructuras de datos en las que el primer elemento en entrar es el primero en salir. Se utilizan habitualmente en algoritmos como la búsqueda en amplitud, ya que permiten explorar los nodos por niveles, respetando el orden en el que fueron generados.  
+  Un ejemplo de esto es:
+```
+from utils import FIFOQueue
+cola = FIFOQueue()
+cola.append('A')
+cola.append('B')
+print(cola.pop())  # Salida: 'A'
+```
+
+### Pila (Last-In, First-Out, LIFO)
+  Aquí el último elemento añadido es el primero en extraerse. Esta estructura es característica de la búsqueda en profundidad, ya que favorece la exploración de un camino hasta el final antes de retroceder.  
+  Ejemplo:
+```
+from utils import Stack
+pila = Stack()
+pila.append('A')
+pila.append('B')
+print(pila.pop())  # Salida: 'B'
+```
+
+### Cola de prioridad
+  Se almacenan los elementos ordenados según un criterio de prioridad asociada. Siempre se extrae el elemento con mayor prioridad, lo que resulta fundamental en algoritmos como Branch & Bound y A*, donde se selecciona el nodo más prometedor en cada paso.  
+  Un ejemplo sería:
+```
+from utils import PriorityQueue
+pq = PriorityQueue(f=lambda x: x)  # menor valor = mayor prioridad
+pq.append(5)
+pq.append(2)
+pq.append(8)
+print(pq.pop())  # Salida: 2
+```
+
 
 ## Estructura del repositorio
 ```
@@ -70,18 +108,19 @@
   Y esto lo que hace es mostrará por consola los resultados de cada algoritmo.
 
 ### Ejemplo de la salida
+  Ahora pongo un ejemplo de como se vería la salida de este programa, este ejemplo pertenece al primer caso de origen **Arad** y destino **Bucharest** y especificamente al algoritmo de búsqueda en Amplitud
 ```
   === BFS ===
-  Generados: XXX
-  Visitados: XXX
-  Costo total: XXX
-  Ruta: [<Node B>, <Node ...>, <Node A>]
-  Tiempo: X.XXXX seg
+  Generados: 21
+  Visitados: 16
+  Costo total: 450
+  Ruta: [<Node B>, <Node F>, <Node S>, <Node A>]
+  Tiempo: 0.0001 seg
 ```
   Cada algoritmo produce métricas distintas, lo que permite analizar su eficiencia y optimalidad. Una cosa a tener en cuenta es que cada vez que lo ejecutes el tiempo irá variando.
 
 ## Conclusiones
-  La búsqueda en anchura (BFS) asegura que se encontrará la solución más cercana a la raíz del árbol de búsqueda, aunque no siempre será la de menor coste. Por su parte, la búsqueda en profundidad (DFS) suele ser eficiente en cuanto al uso de memoria, pero no garantiza obtener una solución óptima. Luego el algoritmo Branch & Bound permite encontrar la ruta de menor coste entre el estado inicial y el objetivo. Finalmente, A* mejora el rendimiento de Branch & Bound al incorporar una heurística admisible, lo que guía la búsqueda de manera más eficiente hacia la solución.
+  La búsqueda en amplitud (BFS) asegura que se encontrará la solución más cercana a la raíz del árbol de búsqueda, aunque no siempre será la de menor coste. Por su parte, la búsqueda en profundidad (DFS) suele ser eficiente en cuanto al uso de memoria, pero no garantiza obtener una solución óptima. Luego el algoritmo Branch & Bound permite encontrar la ruta de menor coste entre el estado inicial y el objetivo. Finalmente, A* mejora el rendimiento de Branch & Bound al incorporar una heurística admisible, lo que guía la búsqueda de manera más eficiente hacia la solución.
 
 
 ## Autor
