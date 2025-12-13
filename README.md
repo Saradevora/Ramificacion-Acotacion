@@ -188,8 +188,30 @@ class Graph:
   La búsqueda en amplitud (BFS) asegura que se encontrará la solución más cercana a la raíz del árbol de búsqueda, aunque no siempre será la de menor coste. Por su parte, la búsqueda en profundidad (DFS) suele ser eficiente en cuanto al uso de memoria, pero no garantiza obtener una solución óptima. Luego el algoritmo Branch & Bound permite encontrar la ruta de menor coste entre el estado inicial y el objetivo. Finalmente, A* mejora el rendimiento de Branch & Bound al incorporar una heurística admisible, lo que guía la búsqueda de manera más eficiente hacia la solución.
 
 ## Vista de la tabla completada
-  Para este rabajo había que rellenar una tabla la cual era la comparación de estrategias de búsqueda, y aquí la adjunto aunque esta subida al repositorio:
+  Para este rabajo había que rellenar una tabla la cual era la comparación de estrategias de búsqueda, y aquí la adjunto aunque esta subida al repositorio:  
   ![Tabla de resultados](tabla_completada.png)
+
+## IMPLEMENTACIÓN MANUAL DE LA: Búsqueda por Ramificación y Acotación en el grafo de Rumanía
+  En esta primera parte opcional se ha llevado a cabo una simulación manual de una búsqueda sobre el grafo de Rumanía utilizando la estrategia de Ramificación y Acotación. El objetivo de este ejercicio es comprender y mostrar de forma clara cómo funciona el algoritmo, siguiendo su ejecución paso a paso.  
+  La búsqueda comienza en el nodo A (Arad) y, en cada iteración, se selecciona para su expansión el nodo cuyo camino desde el origen presenta el menor coste acumulado. De esta manera, el algoritmo prioriza siempre las rutas más económicas en términos de distancia recorrida.
+
+### Estrategia
+  La estrategia de Ramificación y Acotación se apoya en una serie de reglas que guían el proceso de búsqueda.  
+  En primer lugar, se mantiene una lista abierta, que es la lista de nodos pendientes de explorar, la cual se ordenada según el coste acumulado de cada ruta. En cada iteración se selecciona para su expansión el nodo que presenta el menor coste dentro de esta lista. Al expandirlo, se generan sus nodos sucesores y la lista abierta se actualiza incorporando estos nuevos caminos, manteniendo siempre el orden por coste.  
+  Para evitar recorridos innecesarios, no se permiten ciclos, de modo que un mismo nodo no puede aparecer dos veces dentro de una misma ruta. Además, si se alcanza un nodo por distintos caminos, solo se conserva aquel que tiene el coste más bajo, descartando los recorridos alternativos que resultan más costosos.  
+  Esta estrategia hace que la busqueda sea más eficiente.
+
+### Como se desarrollo
+  El proceso de búsqueda se ha llevado a cabo de manera iterativa.  
+  Se parte del nodo inicial A, al que se le asigna un coste acumulado inicial de 0. A partir de ahí, en cada iteración se sigue siempre el mismo procedimiento.  
+  En primer lugar, se selecciona de la lista abierta el nodo cuyo coste acumulado es menor. Este nodo se expande generando sus sucesores, y para cada uno de ellos se calcula el nuevo coste acumulado del camino desde el origen. Con esta información, la lista abierta se actualiza incorporando los nuevos nodos y manteniéndose ordenada según el coste.  
+  Este proceso se repite a lo largo de siete iteraciones, en nuestro caso, aplicando en todo momento los principios de ramificación y acotación descritos anteriormente.  
+
+  La tabla obtenida recoge, para cada iteración, el nodo que ha sido expandido, la ruta seguida hasta alcanzarlo, el coste acumulado asociado a dicha ruta y el estado de la lista abierta una vez realizada la expansión.
+
+### Vista de la solución
+  A continuación se muestra la tabla con el desarrollo completo de 7 iteraciones de la búsqueda por Ramificación y Acotación:  
+  ![Tabla de resultados](parte_opcional_1.png)
 
 ## Autor
 **Trabajo realizado por:** Sara Dévora Ortega  
