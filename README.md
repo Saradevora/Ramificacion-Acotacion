@@ -175,12 +175,12 @@ class Graph:
 ### Ejemplo de la salida
   Ahora pongo un ejemplo de como se vería la salida de este programa, este ejemplo pertenece al primer caso de origen **Arad** y destino **Bucharest** y especificamente al algoritmo de búsqueda en Amplitud
 ```
-  === BFS ===
+  ===  BFS  ===
   Generados: 21
   Visitados: 16
   Costo total: 450
   Ruta: [<Node B>, <Node F>, <Node S>, <Node A>]
-  Tiempo: 0.0001 seg
+  Tiempo: 0.1893 ms
 ```
   Cada algoritmo produce métricas distintas, lo que permite analizar su eficiencia y optimalidad. Una cosa a tener en cuenta es que cada vez que lo ejecutes el tiempo irá variando.
 
